@@ -1,18 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "DestroyRefMigration ",
+  "$id": "DestroyRef",
 
   "title": "My Full Schematics Schema",
   "type": "object",
   "properties": {
-    "index": {
-      "type": "number",
-      "default": 1,
-      "x-prompt": "Aboba?"
+    "decoratorAlias": {
+      "type": "string",
+      "default": "Destroyable",
+      "x-prompt": "Name of `Destroyable` decorator (or which you are use)?"
     },
     "name": {
       "type": "string",
-      "x-prompt": "Aboba?"
+      "default": "takeUntilDestroy",
+      "x-prompt": "Name of `takeUntilDestroy` function (or which you are use)?"
     }
   },
   "required": ["name"]
