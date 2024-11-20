@@ -1,9 +1,9 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "angular-migrations": {
+    "destroy-ref": {
       "description": "A blank schematic.",
-      "factory": "./angular-migrations/index#angularMigrations"
+      "factory": "./destroy-ref/index#destroyRef"
     }
   }
 }
