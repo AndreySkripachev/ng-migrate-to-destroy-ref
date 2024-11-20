@@ -5,16 +5,17 @@
   "title": "My Full Schematics Schema",
   "type": "object",
   "properties": {
-    "decoratorAlias": {
+    "decoratorName": {
       "type": "string",
       "default": "Destroyable",
-      "x-prompt": "Name of `Destroyable` decorator (or which you are use)?"
+      "description": "Name of the decorator to be replaced by DestroyRef",
+      "x-prompt": "What decorator name are you using?"
     },
     "name": {
       "type": "string",
       "default": "takeUntilDestroy",
-      "x-prompt": "Name of `takeUntilDestroy` function (or which you are use)?"
+      "description": "Name of the pipe to be replaced by `takeUntilDestroyed`",
+      "x-prompt": "What decorator name are you using?"
     }
-  },
-  "required": ["name"]
+  }
 }
