@@ -15,11 +15,12 @@
   "dependencies": {
     "@angular-devkit/core": "^18.2.12",
     "@angular-devkit/schematics": "^18.2.12",
+    "ts-morph": "^24.0.0",
     "typescript": "~5.5.2"
   },
   "devDependencies": {
-    "@types/node": "^18.18.0",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
     "jasmine": "^5.0.0"
   }
 }
