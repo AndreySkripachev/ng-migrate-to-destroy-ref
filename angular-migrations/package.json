@@ -1,6 +1,6 @@
 {
   "name": "angular-migrations",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@angular-devkit/core": "^18.2.12",
     "@angular-devkit/schematics": "^18.2.12",
+    "@schematics/angular": "^19.0.0",
     "ts-morph": "^24.0.0",
     "typescript": "~5.5.2"
   },

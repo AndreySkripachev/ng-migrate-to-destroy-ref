@@ -5,6 +5,11 @@
       "description": "A blank schematic.",
       "factory": "./destroy-ref/index#destroyRef",
       "schema": "./destroy-ref/schema.json"
+    },
+    "ng-add": {
+      "description": "Add library to the project",
+      "factory": "./ng-add/index#ngAdd",
+      "schema": "./ng-add/schema.json"
     }
   }
 }
