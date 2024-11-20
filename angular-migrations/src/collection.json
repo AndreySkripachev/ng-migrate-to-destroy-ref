@@ -3,7 +3,8 @@
   "schematics": {
     "destroy-ref": {
       "description": "A blank schematic.",
-      "factory": "./destroy-ref/index#destroyRef"
+      "factory": "./destroy-ref/index#destroyRef",
+      "schema": "./destroy-ref/schema.json"
     }
   }
 }
