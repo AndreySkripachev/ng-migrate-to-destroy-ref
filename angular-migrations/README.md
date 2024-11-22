@@ -1,28 +1,25 @@
-# Getting Started With Schematics
+# Migration scripts for Angular
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
+Contains schemas for automatic migrations to new Angular features
 
-### Testing
-
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
-
-Check the documentation with
+## Installation
 
 ```bash
-schematics --help
+npm i -D frontend_fan-angular-migrations
 ```
 
-### Unit Testing
+## Available migrations
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+### `DestroyRef`
 
-### Publishing
+A schema that converts deprecated patterns for tracking Angular structure destruction to use DestroyRef and takeUntilDestroyed().
 
-To publish, simply do:
+The following patterns are currently supported:
+
+- Decorator and RxJS operator (e.g. `@Destroyable` and `takeUntilDestroy(this)`)
+
+To migrate, run the following script:
 
 ```bash
-npm run build
-npm publish
+ng g frontend_fan-angular-migrations:destroy-ref
 ```
-
-That's it!
