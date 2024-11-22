@@ -68,6 +68,7 @@ function processFile(tsSource: string, options: SchematicProperties): string {
   if (flags.some(Boolean)) {
     ImportUtils.addImport(source, 'DestroyRef', '@angular/core', 0);
     ImportUtils.addImport(source, 'takeUntilDestroyed', '@angular/core/rxjs-interop', 0);
+    ImportUtils.addImport(source, 'inject', '@angular/core', 0);
   }
 
   ImportUtils.removeNamedImport(source, options.decoratorName);
