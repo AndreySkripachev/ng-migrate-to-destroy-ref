@@ -5,7 +5,6 @@ import { ClassUtils } from './utils/class-utils';
 import { NodeUtils } from './utils/node-utils';
 
 const FILE_REGEX = /^\/projects\/.*\.ts$/;
-const DESTROYABLE_ALIAS = 'DestroyableComponent';
 const project = new Project();
 
 interface SchematicProperties {
@@ -15,10 +14,6 @@ interface SchematicProperties {
 
   /** Pipe name. */
   readonly pipeName: string;
-}
-
-function shouldProcessFile(tsSource: string): boolean {
-	return tsSource.includes(DESTROYABLE_ALIAS) || tsSource.includes('takeUntilDestroy(this)');
 }
 
 function getComponentClasses(source: SourceFile): ClassDeclaration[] {
@@ -60,10 +55,6 @@ function processComponent(component: ClassDeclaration, options: SchematicPropert
 }
 
 function processFile(tsSource: string, options: SchematicProperties): string {
-	if (!shouldProcessFile(tsSource)) {
-		return tsSource;
-	}
-
 	const source = project.createSourceFile('temp.ts', tsSource, { overwrite: true });
 
 	const components = getComponentClasses(source);
