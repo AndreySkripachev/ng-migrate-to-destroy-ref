@@ -1,4 +1,4 @@
-import { ImportDeclaration, ImportSpecifier, NamedImports, SourceFile } from "ts-morph";
+import { ImportDeclaration, ImportSpecifier, SourceFile } from "ts-morph";
 
 export namespace ImportUtils {
 
