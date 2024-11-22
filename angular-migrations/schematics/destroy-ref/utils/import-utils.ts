@@ -31,7 +31,6 @@ export namespace ImportUtils {
 			source.addImportDeclaration({
 				moduleSpecifier: moduleName,
 				namedImports: [importName],
-				leadingTrivia: '\t',
 			});
 			return;
 		}
@@ -39,7 +38,6 @@ export namespace ImportUtils {
 		source.insertImportDeclaration(index, {
 			moduleSpecifier: moduleName,
 			namedImports: [importName],
-			leadingTrivia: '\t',
 		});
 	}
 

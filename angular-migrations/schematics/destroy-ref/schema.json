@@ -9,13 +9,13 @@
       "type": "string",
       "default": "Destroyable",
       "description": "Name of the decorator to be replaced by DestroyRef",
-      "x-prompt": "What decorator name are you using?"
+      "x-prompt": "Name of the decorator to be replaced by DestroyRef"
     },
     "pipeName": {
       "type": "string",
       "default": "takeUntilDestroy",
       "description": "Name of the pipe to be replaced by `takeUntilDestroyed`",
-      "x-prompt": "What decorator name are you using?"
+      "x-prompt": "Name of the pipe to be replaced by `takeUntilDestroyed`"
     }
   }
 }
