@@ -1,17 +1,19 @@
 {
-  "name": "angular-migrations",
-  "version": "0.0.1",
+  "name": "frontend_fan-angular-migrations",
+  "version": "0.0.3",
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && jasmine src/**/*_spec.js"
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "build:schema": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/angular-migrations/"
   },
   "keywords": [
     "schematics"
   ],
   "author": "",
   "license": "MIT",
-  "schematics": "./src/collection.json",
+  "schematics": "./schematics/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^18.2.12",
     "@angular-devkit/schematics": "^18.2.12",
@@ -22,6 +24,14 @@
   "devDependencies": {
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "copyfiles": "^2.4.1",
     "jasmine": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=17.0.0",
+    "@angular/core": ">=17.0.0"
+  },
+  "ng-add": {
+    "save": "devDependencies"
   }
 }
