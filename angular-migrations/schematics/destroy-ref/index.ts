@@ -48,11 +48,11 @@ function insertDestroyRefToComponent(component: ClassDeclaration): string {
 function processComponent(component: ClassDeclaration, options: SchematicProperties): void {
 	ClassUtils.removeDecorator(component, options.decoratorName);
 
-	const fn = NodeUtils.findFunctionCallInNode(component, options.pipeName);
+	const fns = NodeUtils.findFunctionCallsInNode(component, options.pipeName);
 
-	if (fn !== undefined) {
+	if (fns.length !== 0) {
 		const propName = insertDestroyRefToComponent(component);
-		fn?.replaceWithText(`takeUntilDestroyed(this.${propName})`);
+		fns.forEach(fn => fn.replaceWithText(`takeUntilDestroyed(this.${propName})`));
 	}
 }
 

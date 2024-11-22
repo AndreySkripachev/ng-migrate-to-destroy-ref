@@ -22,4 +22,22 @@ export namespace NodeUtils {
 
 		return null;
 	}
+
+  export function findFunctionCallsInNode(node: Node, functionName: string): CallExpression[] {
+    const expressions: CallExpression[] = [];
+
+    for (const child of node.getChildren()) {
+      if (child instanceof CallExpression) {
+        if (getIdentifierFor(child)?.getText() === functionName) {
+          expressions.push(child);
+        }
+      }
+
+      const nestedCalls = findFunctionCallsInNode(child, functionName);
+
+      expressions.push(...nestedCalls);
+    }
+
+    return expressions
+  }
 }
