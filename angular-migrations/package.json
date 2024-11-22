@@ -1,12 +1,13 @@
 {
   "name": "frontend_fan-angular-migrations",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js",
     "build:schema": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/angular-migrations/"
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/angular-migrations/",
+    "pub": "npm run build && npm publish"
   },
   "keywords": [
     "schematics"
