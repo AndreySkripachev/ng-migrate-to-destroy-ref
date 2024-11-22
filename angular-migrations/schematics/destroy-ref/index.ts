@@ -45,7 +45,7 @@ function insertDestroyRefToComponent(component: ClassDeclaration): string {
   return destroyRefName;
 }
 
-function processComponent(component: ClassDeclaration, options: SchematicProperties): void {
+function processComponent(component: ClassDeclaration, options: SchematicProperties): boolean {
 	ClassUtils.removeDecorator(component, options.decoratorName);
 
 	const fns = NodeUtils.findFunctionCallsInNode(component, options.pipeName);
@@ -53,7 +53,10 @@ function processComponent(component: ClassDeclaration, options: SchematicPropert
 	if (fns.length !== 0) {
 		const propName = insertDestroyRefToComponent(component);
 		fns.forEach(fn => fn.replaceWithText(`takeUntilDestroyed(this.${propName})`));
+    return true;
 	}
+
+  return false;
 }
 
 function processFile(tsSource: string, options: SchematicProperties): string {
@@ -69,10 +72,12 @@ function processFile(tsSource: string, options: SchematicProperties): string {
 		return tsSource;
 	}
 
-	ImportUtils.addImport(source, 'DestroyRef', '@angular/core', 0);
-	ImportUtils.addImport(source, 'takeUntilDestroyed', '@angular/core/rxjs-interop', 0);
+	const flags = components.map(component => processComponent(component, options));
 
-	components.forEach(component => processComponent(component, options));
+  if (flags.some(Boolean)) {
+    ImportUtils.addImport(source, 'DestroyRef', '@angular/core', 0);
+    ImportUtils.addImport(source, 'takeUntilDestroyed', '@angular/core/rxjs-interop', 0);
+  }
 
 	ImportUtils.removeImport(source, '/destroyable', false);
 
