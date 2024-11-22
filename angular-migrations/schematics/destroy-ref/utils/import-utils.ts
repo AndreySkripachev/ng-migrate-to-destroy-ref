@@ -1,4 +1,4 @@
-import { ImportDeclaration, SourceFile } from "ts-morph";
+import { ImportDeclaration, ImportSpecifier, NamedImports, SourceFile } from "ts-morph";
 
 export namespace ImportUtils {
 
@@ -44,4 +44,31 @@ export namespace ImportUtils {
 	export function removeImport(source: SourceFile, moduleName: string, strict = true): void {
 		getImportByName(source, moduleName, strict)?.remove();
 	}
+
+  export function removeNamedImport(source: SourceFile, importName: string): void {
+    let specifier: ImportSpecifier | null = null;
+
+    for (const importDec of source.getImportDeclarations()) {
+      if (specifier !== null) {
+        break;
+      }
+
+      for (const namedImport of importDec.getNamedImports()) {
+        if (namedImport.getName() === importName) {
+          specifier = namedImport;
+          break
+        }
+      }
+    }
+
+    if (specifier === null) {
+      return;
+    }
+
+    const importDeclaration = specifier.getImportDeclaration();
+    specifier.remove();
+    if (importDeclaration.getNamedImports().length === 0) {
+      importDeclaration.remove();
+    }
+  }
 }

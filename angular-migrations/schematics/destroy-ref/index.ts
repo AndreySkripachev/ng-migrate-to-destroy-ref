@@ -36,7 +36,7 @@ function insertDestroyRefToComponent(component: ClassDeclaration): string {
   }
 
   component.insertProperty(0, {
-    name: 'destroyRef',
+    name: destroyRefName,
     initializer: 'inject(DestroyRef)',
     isReadonly: true,
     scope: Scope.Private,
@@ -79,7 +79,8 @@ function processFile(tsSource: string, options: SchematicProperties): string {
     ImportUtils.addImport(source, 'takeUntilDestroyed', '@angular/core/rxjs-interop', 0);
   }
 
-	ImportUtils.removeImport(source, '/destroyable', false);
+  ImportUtils.removeNamedImport(source, options.decoratorName);
+  ImportUtils.removeNamedImport(source, options.pipeName);
 
 	return source.getFullText();
 }
